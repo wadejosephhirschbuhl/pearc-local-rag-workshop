@@ -18,55 +18,72 @@ The system is intentionally designed so that **no documents persist between sess
 
 ---
 
+## Project layout
+
+pearc-local-rag-workshop/
+├── app.py # Streamlit RAG application
+├── scripts/
+│ └── run_app.sh # Starts app with a fresh vector DB each run
+├── rag_chroma_db/ # Local vector DB (auto-managed, wiped on start)
+├── notebooks/
+│ └── pearc_rag_workshop.ipynb # Optional workshop notebook
+├── requirements.txt # Minimal runtime dependencies
+├── requirements-dev.txt # Runtime + JupyterLab (optional)
+├── requirements-lock.txt # Exact frozen environment (pip freeze)
+└── README.md
+
+---
+
 ## Ollama setup
 
 Verify Ollama:
-```bash
+
 ollama --version
 Pull a model (choose one):
 
-bash
-Copy code
+
 ollama pull llama3.1:8b
 # or smaller/faster:
 # ollama pull llama3.2:3b
 If needed, start the Ollama server:
 
-bash
-Copy code
 ollama serve
 Verify it is running:
 
-bash
-Copy code
 curl http://127.0.0.1:11434/api/tags
 Python environment setup
 Create and activate a virtual environment:
 
-bash
-Copy code
+---
+
+Python environment setup
+
+Create and activate a virtual environment:
+
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip setuptools wheel
 Install runtime dependencies:
 
-bash
-Copy code
 pip install -r requirements.txt
 Optional (only if you want to use the notebook):
 
-bash
-Copy code
 pip install -r requirements-dev.txt
 Run the app (fresh session every time)
-bash
-Copy code
+
+---
+
+Running the application (fresh session each time)
+
+Start the app using the provided script:
+
 ./scripts/run_app.sh
 Open in your browser:
 
-arduino
-Copy code
 http://localhost:8501
+
+---
+
 What “fresh session” means
 Each time the app is started via ./scripts/run_app.sh:
 
@@ -84,6 +101,8 @@ Clean, reproducible workshop runs
 
 Privacy-safe defaults
 
+---
+
 Typical workflow
 Start the app
 
@@ -95,16 +114,19 @@ Ask questions in the chat interface
 
 Inspect citations and retrieved context if desired
 
+---
+
 Troubleshooting
+
 Streamlit port already in use
-bash
-Copy code
 streamlit run app.py --server.port 8502
+
 Ollama not reachable
-bash
-Copy code
 ollama serve
 curl http://127.0.0.1:11434/api/tags
+
+---
+
 First run downloads embeddings
 The first run may download the embedding model once and cache it locally.
 No account or token is required.

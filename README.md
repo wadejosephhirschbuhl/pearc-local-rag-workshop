@@ -1,7 +1,7 @@
-============================================================
+------------------------------------------------------------
 PEARC LOCAL RAG WORKSHOP
 (Ollama + Chroma + Streamlit)
-============================================================
+------------------------------------------------------------
 
 This project is a local-first Retrieval-Augmented Generation (RAG)
 workshop demo designed for research computing audiences.

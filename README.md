@@ -1,34 +1,59 @@
-PEARC Local RAG Workshop (Ollama + Chroma + Streamlit)
+============================================================
+PEARC LOCAL RAG WORKSHOP
+(Ollama + Chroma + Streamlit)
+============================================================
 
-This project is a local-first Retrieval-Augmented Generation (RAG) workshop demo designed for research computing audiences.
+This project is a local-first Retrieval-Augmented Generation (RAG)
+workshop demo designed for research computing audiences.
 
-Core components:
-- LLM: Ollama (runs locally, no API keys)
-- Embeddings: SentenceTransformers (all-MiniLM-L6-v2)
-- Vector Database: Chroma
-- Application: Streamlit (upload documents at runtime, chat with citations)
+The workshop emphasizes transparency, reproducibility, and hands-on
+understanding of modern RAG systems using only local, open-source tools.
 
-The system is intentionally designed so that no documents persist between sessions.
+The system is intentionally designed so that NO DOCUMENTS persist
+between sessions.
 
 
+------------------------------------------------------------
+CORE COMPONENTS
+------------------------------------------------------------
+
+LLM
+  - Ollama (runs locally, no API keys required)
+
+Embeddings
+  - SentenceTransformers (model: all-MiniLM-L6-v2)
+
+Vector Database
+  - Chroma (local, on-disk)
+
+Application
+  - Streamlit (runtime document upload + chat with citations)
+
+
+------------------------------------------------------------
 PREREQUISITES
+------------------------------------------------------------
 
 - Python 3.12 or newer
 - Ollama installed locally
 
 
+------------------------------------------------------------
 PROJECT LAYOUT
+------------------------------------------------------------
 
 pearc-local-rag-workshop/
+
   app.py
     Streamlit RAG application
 
   scripts/
     run_app.sh
-      Starts the app with a fresh vector database each run
+      Starts the app and clears the vector database on every run
 
   rag_chroma_db/
-    Local vector database directory (auto-managed and wiped on start)
+    Local vector database directory
+    (auto-managed and wiped at app start)
 
   notebooks/
     pearc_rag_workshop.ipynb
@@ -47,16 +72,20 @@ pearc-local-rag-workshop/
     This file
 
 
+------------------------------------------------------------
 OLLAMA SETUP
+------------------------------------------------------------
 
 Verify Ollama is installed:
   ollama --version
 
 Pull a model (choose one):
-  ollama pull llama3.1:8b
 
-Or a smaller / faster option:
-  ollama pull llama3.2:3b
+  Recommended:
+    ollama pull llama3.1:8b
+
+  Smaller / faster option:
+    ollama pull llama3.2:3b
 
 Start the Ollama server if needed:
   ollama serve
@@ -65,66 +94,91 @@ Verify the server is running:
   curl http://127.0.0.1:11434/api/tags
 
 
+------------------------------------------------------------
 PYTHON ENVIRONMENT SETUP
+------------------------------------------------------------
 
 Create and activate a virtual environment:
+
   python3 -m venv .venv
   source .venv/bin/activate
   python -m pip install --upgrade pip setuptools wheel
 
 Install runtime dependencies:
+
   pip install -r requirements.txt
 
 Optional (only if you want to run the notebook):
+
   pip install -r requirements-dev.txt
 
 
-RUNNING THE APPLICATION (FRESH SESSION EVERY TIME)
+------------------------------------------------------------
+RUNNING THE APPLICATION
+(FRESH SESSION EVERY TIME)
+------------------------------------------------------------
 
 Start the app using the provided script:
+
   ./scripts/run_app.sh
 
 Open your browser to:
+
   http://localhost:8501
 
 
-WHAT “FRESH SESSION” MEANS
+------------------------------------------------------------
+WHAT "FRESH SESSION" MEANS
+------------------------------------------------------------
 
 Each time the app is started via ./scripts/run_app.sh:
-- The vector database (rag_chroma_db/) is deleted and recreated
-- No previously uploaded documents persist
-- All documents must be uploaded again through the UI
+
+  - The vector database (rag_chroma_db/) is deleted and recreated
+  - No previously uploaded documents persist
+  - All documents must be uploaded again through the UI
 
 This guarantees:
-- No cross-session data leakage
-- Clean, reproducible workshop runs
-- Privacy-safe defaults
+
+  - No cross-session data leakage
+  - Clean, reproducible workshop runs
+  - Privacy-safe defaults
 
 
+------------------------------------------------------------
 TYPICAL WORKSHOP WORKFLOW
+------------------------------------------------------------
 
 1. Start the app
 2. Upload one or more PDF, TXT, MD, or DOCX files
-3. Click “Ingest / Update Vector DB”
+3. Click "Ingest / Update Vector DB"
 4. Ask questions in the chat interface
 5. Inspect citations and retrieved context if desired
 
 
+------------------------------------------------------------
 TROUBLESHOOTING
+------------------------------------------------------------
 
 Streamlit port already in use:
+
   streamlit run app.py --server.port 8502
 
+
 Ollama not reachable:
+
   ollama serve
   curl http://127.0.0.1:11434/api/tags
 
+
 First run downloads embeddings:
-The first run may download the embedding model once and cache it locally.
-No account or token is required.
+
+  The first run may download the embedding model once and cache it
+  locally. No account or token is required.
 
 
+------------------------------------------------------------
 NOTES
+------------------------------------------------------------
 
 - This project is intended for hands-on workshops and training
 - The design prioritizes transparency, reproducibility, and offline operation

@@ -45,15 +45,15 @@ pearc-local-rag-workshop/
 
 ## Ollama setup
 
-Verify Ollama:
+#Verify Ollama:
 
 ollama --version
 Pull a model (choose one):
 
-
 ollama pull llama3.1:8b
 # or smaller/faster:
 # ollama pull llama3.2:3b
+
 If needed, start the Ollama server:
 
 ollama serve
@@ -65,7 +65,7 @@ Create and activate a virtual environment:
 
 ---
 
-Python environment setup
+#Python environment setup
 
 Create and activate a virtual environment:
 
@@ -82,7 +82,7 @@ Run the app (fresh session every time)
 
 ---
 
-Running the application (fresh session each time)
+#Running the application (fresh session each time)
 
 Start the app using the provided script:
 
@@ -93,7 +93,7 @@ http://localhost:8501
 
 ---
 
-What “fresh session” means
+#What “fresh session” means
 Each time the app is started via ./scripts/run_app.sh:
 
 The vector database (rag_chroma_db/) is deleted and recreated
@@ -112,7 +112,8 @@ Privacy-safe defaults
 
 ---
 
-Typical workflow
+#Typical workflow
+
 Start the app
 
 Upload one or more PDF / TXT / MD / DOCX files
@@ -125,7 +126,7 @@ Inspect citations and retrieved context if desired
 
 ---
 
-Troubleshooting
+#Troubleshooting
 
 Streamlit port already in use
 streamlit run app.py --server.port 8502

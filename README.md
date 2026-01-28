@@ -21,6 +21,7 @@ The system is intentionally designed so that **no documents persist between sess
 ## Project layout
 ---
 pearc-local-rag-workshop/
+
 ├── app.py # Streamlit RAG application
 
 ├── scripts/

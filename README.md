@@ -22,14 +22,23 @@ The system is intentionally designed so that **no documents persist between sess
 ---
 pearc-local-rag-workshop/
 ├── app.py # Streamlit RAG application
+
 ├── scripts/
+
 │ └── run_app.sh # Starts app with a fresh vector DB each run
+
 ├── rag_chroma_db/ # Local vector DB (auto-managed, wiped on start)
+
 ├── notebooks/
+
 │ └── pearc_rag_workshop.ipynb # Optional workshop notebook
+
 ├── requirements.txt # Minimal runtime dependencies
+
 ├── requirements-dev.txt # Runtime + JupyterLab (optional)
+
 ├── requirements-lock.txt # Exact frozen environment (pip freeze)
+
 └── README.md
 ---
 

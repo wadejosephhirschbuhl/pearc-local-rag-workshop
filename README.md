@@ -51,8 +51,8 @@ ollama --version
 Pull a model (choose one):
 
 ollama pull llama3.1:8b
-# or smaller/faster:
-# ollama pull llama3.2:3b
+or smaller/faster:
+ollama pull llama3.2:3b
 
 If needed, start the Ollama server:
 

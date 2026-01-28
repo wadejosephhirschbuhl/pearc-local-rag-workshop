@@ -126,7 +126,30 @@ Open your browser to:
 
   http://localhost:8501
 
+------------------------------------------------------------
+OPTIONAL: CROSS-ENCODER RERANKER (BETTER RELEVANCE)
+------------------------------------------------------------
 
+The app includes an optional cross-encoder reranker that can improve
+retrieval quality when multiple documents are indexed.
+
+What it does:
+  - First retrieves a larger candidate pool from the vector DB
+  - Then reranks those chunks by query-to-chunk relevance
+  - Finally selects the best top-k chunks for the model prompt
+
+How to use it:
+  - In the sidebar, enable:
+      "Use cross-encoder reranker (slower, often better)"
+  - Adjust the candidate pool slider if needed
+
+Notes:
+  - The reranker is slower than vector-only retrieval
+  - The reranker model may download once on first use (then caches locally)
+  - If you want to pre-cache it before a workshop, run:
+
+      python -c "from sentence_transformers import CrossEncoder; CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2'); print('reranker cached')"
+    
 ------------------------------------------------------------
 WHAT "FRESH SESSION" MEANS
 ------------------------------------------------------------

@@ -1,0 +1,7 @@
+chromadb==1.4.1
+ollama
+pypdf
+python-docx
+requests
+sentence-transformers
+streamlit

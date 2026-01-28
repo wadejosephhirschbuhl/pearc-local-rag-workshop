@@ -45,7 +45,7 @@ pearc-local-rag-workshop/
 
 ## Ollama setup
 
-#Verify Ollama:
+# Verify Ollama:
 
 ollama --version
 Pull a model (choose one):

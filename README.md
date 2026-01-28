@@ -19,7 +19,7 @@ The system is intentionally designed so that **no documents persist between sess
 ---
 
 ## Project layout
-
+---
 pearc-local-rag-workshop/
 ├── app.py # Streamlit RAG application
 ├── scripts/
@@ -31,7 +31,6 @@ pearc-local-rag-workshop/
 ├── requirements-dev.txt # Runtime + JupyterLab (optional)
 ├── requirements-lock.txt # Exact frozen environment (pip freeze)
 └── README.md
-
 ---
 
 ## Ollama setup

@@ -34,8 +34,12 @@ Application
 PREREQUISITES
 ------------------------------------------------------------
 
-- Python 3.12 or newer
+- Python 3.12.x recommended (Python 3.11 also works)
 - Ollama installed locally
+
+Notes:
+  - A .python-version file is included for users of pyenv
+  - Avoid Python 3.13 (some binary dependencies may not be available)
 
 
 ------------------------------------------------------------
@@ -71,6 +75,9 @@ pearc-local-rag-workshop/
   README.txt
     This file
 
+  .python-version
+    Recommended Python version (3.12.12) for pyenv users
+
 
 ------------------------------------------------------------
 OLLAMA SETUP
@@ -87,16 +94,15 @@ Pull a model (choose one):
   Smaller / faster option:
     ollama pull llama3.2:3b
 
-Start the Ollama server if needed:
-  ollama serve
-
-Verify the server is running:
-  curl http://127.0.0.1:11434/api/tags
+Start the Ollama server
 
 
 ------------------------------------------------------------
 PYTHON ENVIRONMENT SETUP
 ------------------------------------------------------------
+
+If you use pyenv:
+  - The included .python-version file will automatically select Python 3.12.12
 
 Create and activate a virtual environment:
 
@@ -126,6 +132,7 @@ Open your browser to:
 
   http://localhost:8501
 
+
 ------------------------------------------------------------
 OPTIONAL: CROSS-ENCODER RERANKER (BETTER RELEVANCE)
 ------------------------------------------------------------
@@ -134,9 +141,9 @@ The app includes an optional cross-encoder reranker that can improve
 retrieval quality when multiple documents are indexed.
 
 What it does:
-  - First retrieves a larger candidate pool from the vector DB
-  - Then reranks those chunks by query-to-chunk relevance
-  - Finally selects the best top-k chunks for the model prompt
+  - Retrieves a larger candidate pool from the vector database
+  - Reranks chunks by query-to-chunk relevance
+  - Selects the best top-k chunks for the model prompt
 
 How to use it:
   - In the sidebar, enable:
@@ -146,10 +153,11 @@ How to use it:
 Notes:
   - The reranker is slower than vector-only retrieval
   - The reranker model may download once on first use (then caches locally)
-  - If you want to pre-cache it before a workshop, run:
+  - To pre-cache the reranker before a workshop, run:
 
       python -c "from sentence_transformers import CrossEncoder; CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2'); print('reranker cached')"
-    
+
+
 ------------------------------------------------------------
 WHAT "FRESH SESSION" MEANS
 ------------------------------------------------------------
@@ -205,4 +213,6 @@ NOTES
 
 - This project is intended for hands-on workshops and training
 - The design prioritizes transparency, reproducibility, and offline operation
-- The notebook is optional; the Streamlit app is the primary interface
+- The notebook demonstrates the baseline RAG pipeline
+- The Streamlit app extends that baseline with production-style upgrades
+  such as optional reranking

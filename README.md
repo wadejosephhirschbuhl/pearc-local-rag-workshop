@@ -42,8 +42,11 @@ Notes:
   - Avoid Python 3.13 (some binary dependencies may not be available)
 
 Step 1 — Install Python 3.12.12 with pyenv (once)
+
 pyenv install 3.12.12
+
 pyenv versions
+
 You should see 3.12.12 listed.
 
 Then you are ready to clone the repo
